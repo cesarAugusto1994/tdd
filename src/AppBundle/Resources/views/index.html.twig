@@ -1,0 +1,40 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}Home{% endblock %}
+
+{% block stylesheets %}{{ parent() }}
+    <style type="text/css">
+        .thumbnail:hover {
+            background-color: #e3e3e3;
+        }
+    </style>
+
+{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+        <div class="page-header">
+            <h1>Produtos</h1>
+        </div>
+        <div class="row">
+            {% if 0 == produtos|length %}
+                <p class="lead">Nenhum produto encontrado com o parametro de pesquisa: <b>{{ param }}</b></p>
+            {% else %}
+                {% for produto in produtos %}
+                    <div class="col-xs-6 col-md-3">
+                        <div class="thumbnail">
+                            <p class="lead">{{ produto.nome }}</p>
+                            <p>{{ produto.descricao }}</p>
+                            <p class="lead">R$ {{ produto.valor|replace('.', ',') }}</p>
+                            <button class="btn btn-default">Comprar</button>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}{{ parent() }}{% endblock %}

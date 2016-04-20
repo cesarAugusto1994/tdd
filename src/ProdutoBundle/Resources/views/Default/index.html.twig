@@ -1,0 +1,58 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}{% endblock %}
+{% block stylesheets %}{{ parent() }}{% endblock %}
+{% block body %}{{ parent() }}
+
+    <div class="well well-sm">
+        <a href="{{ path('novo') }}">
+            <button class="btn btn-default">Novo</button>
+        </a>
+    </div>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Descricao</th>
+            <th>Categoria</th>
+            <th>valor</th>
+            <th>Cadastro</th>
+            <th>&nbsp;</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for produto in produtos %}
+            <tr class="selectRow" {% if produto.ativo == false %} style="color: #868686" {% endif %}>
+                <td>{{ produto.nome }}</td>
+                <td>{{ produto.descricao }}</td>
+                <td>{{ produto.categoria.nome }}</td>
+                <td>{{ produto.valor|replace('.', ',') }}</td>
+                <td>{{ produto.cadastro|date('d/m/Y') }}</td>
+                <td>
+                    <ul class="nav navbar-nav">
+                        <li class="dropdown">
+                            <button class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                                    aria-expanded="false">...
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Editar</a></li>
+                                <li><a href="#">Ativar</a></li>
+                                <li><a href="#">Something else here</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li class="dropdown-header">Status</li>
+                                {% if produto.ativo == false %}
+                                    <li><a href="{{ path('setStatus', {'produto' : {{ produto }}, 'status' : true }) }}">Ativar</a></li>
+                                {% else %}
+                                    <li><a href="{{ path('setStatus', {'produto' : {{ produto }}, 'status' : false }) }}">Inativar</a></li>
+                                {% endif %}
+                            </ul>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
+{% block javascripts %}{{ parent() }}{% endblock %}

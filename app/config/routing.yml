@@ -1,0 +1,14 @@
+produto:
+    resource: "@ProdutoBundle/Controller/"
+    type:     annotation
+    prefix:   /produto
+
+pessoa:
+    resource: "@PessoaBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation
+    prefix:   /

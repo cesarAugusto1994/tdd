@@ -1,0 +1,36 @@
+{% extends '::base.html.twig' %}
+{% block title %}Cadastro{% endblock %}
+{% block stylesheets %}{{ parent() }}{% endblock %}
+{% block body %}
+
+    <div class="well well-sm">
+        <div class="btn-group" role="group" aria-label="...">
+            <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-novo">Novo</button>
+
+            <div class="btn-group" role="group">
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                    Menu
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a href="#" onclick="swal('Opsss.', 'Nome n&atilde;o informado', 'error');">Dropdown link</a>
+                    </li>
+                    <li><a href="#">Dropdown link</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4">
+            {% form_theme form 'bootstrap_3_layout.html.twig' %}
+            {{ form_start(form) }}
+            {{ form_errors(form) }}
+            {{ form_widget(form) }}
+            {{ form_end(form) }}
+        </div>
+    </div>
+
+{% endblock %}
+{% block javascripts %}{{ parent() }}{% endblock %}
