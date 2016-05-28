@@ -12,13 +12,19 @@ use ProdutoBundle\Entity\Produto;
  */
 class ProdutoRepository extends \Doctrine\ORM\EntityRepository
 {
-
+    /**
+     * @param Produto $produto
+     */
     public function save(Produto $produto)
     {
         $this->getEntityManager()->persist($produto);
         $this->getEntityManager()->flush($produto);
     }
 
+    /**
+     * @param $search
+     * @return array
+     */
     public function search($search)
     {
         return $this->getEntityManager()->getRepository('ProdutoBundle:Produto')

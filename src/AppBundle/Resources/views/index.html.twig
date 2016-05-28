@@ -4,11 +4,22 @@
 
 {% block stylesheets %}{{ parent() }}
     <style type="text/css">
-        .thumbnail:hover {
-            background-color: #e3e3e3;
+        #comprar{
+            visibility: hidden;
+        }
+        .thumbnail{
+          padding: 1em 1em;
+        }
+        .thumbnail:hover #comprar{
+            background-color: #f6f6f6;
+            visibility: visible;
+        }
+        .thumbnail:hover{
+          -webkit-box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.28);
+          -moz-box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.28);
+          box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.28);
         }
     </style>
-
 {% endblock %}
 
 {% block body %}
@@ -19,15 +30,16 @@
         </div>
         <div class="row">
             {% if 0 == produtos|length %}
-                <p class="lead">Nenhum produto encontrado com o parametro de pesquisa: <b>{{ param }}</b></p>
+                <p class="lead">Nenhum produto encontrado com o parametro de pesquisa: <b>{{ param }}</b><span class='icon icon-calendar'>calendar</span></p>
             {% else %}
                 {% for produto in produtos %}
                     <div class="col-xs-6 col-md-3">
                         <div class="thumbnail">
                             <p class="lead">{{ produto.nome }}</p>
+                            <div class="separator"></div>
                             <p>{{ produto.descricao }}</p>
                             <p class="lead">R$ {{ produto.valor|replace('.', ',') }}</p>
-                            <button class="btn btn-default">Comprar</button>
+                            <!--<button id="comprar" class="btn btn-default">Comprar</button>-->
                         </div>
                     </div>
                 {% endfor %}

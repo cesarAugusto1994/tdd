@@ -1,7 +1,9 @@
 {% extends '::base.html.twig' %}
 
 {% block title %}{% endblock %}
-{% block stylesheets %}{{ parent() }}{% endblock %}
+{% block stylesheets %}{{ parent() }}
+<link rel="stylesheet" href="{{ asset('assets/vendor/styles/css/custom.css') }}">
+{% endblock %}
 {% block body %}{{ parent() }}
 
     <div class="well well-sm">
@@ -41,11 +43,13 @@
                                 <li><a href="#">Something else here</a></li>
                                 <li role="separator" class="divider"></li>
                                 <li class="dropdown-header">Status</li>
+                                {#
                                 {% if produto.ativo == false %}
                                     <li><a href="{{ path('setStatus', {'produto' : {{ produto }}, 'status' : true }) }}">Ativar</a></li>
                                 {% else %}
                                     <li><a href="{{ path('setStatus', {'produto' : {{ produto }}, 'status' : false }) }}">Inativar</a></li>
                                 {% endif %}
+                                #}
                             </ul>
                         </li>
                     </ul>

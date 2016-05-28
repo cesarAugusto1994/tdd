@@ -1,0 +1,8 @@
+
+.dropdown-menu li:hover {
+    border-left: 2px solid red;
+}
+
+table tbody tr:hover{
+    background-color: #cfc;
+}
